@@ -1,4 +1,4 @@
-# SmartnContract Audit Workflows
+# Smart Contract Audit Workflows
 
 This repository collects reusable workflows for focused smart contract review. The
 workflows are designed to help reviewers examine standards conformance,
