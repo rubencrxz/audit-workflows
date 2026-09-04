@@ -1,7 +1,7 @@
 # ERC-7540 Workflow Benchmark: Lagoon v0
 
-This file is a benchmark record, not an audit report. It documents the currently
-supplied comparison facts and leaves unmeasured fields explicit.
+This file is a benchmark record, not an audit report. It documents one historical
+comparison and leaves unmeasured fields explicit.
 
 ## Target repository
 
@@ -20,39 +20,44 @@ Final fixed commit:
 
 ## Public audit reference
 
-The benchmark context identifies the relevant public audit as Nethermind's Lagoon v0
-audit. Lagoon publishes reports through its
-[public audits index](https://docs.lagoon.finance/resources/audits). The exact report
-file corresponding to the supplied commit has not yet been recorded here; add the
-direct report URL after verifying its metadata.
+The benchmark ground truth is the public Nethermind audit of Lagoon v0. Lagoon
+publishes reports through its
+[public audits index](https://docs.lagoon.finance/resources/audits), which is the
+public reference used for this benchmark record.
 
 ## Known historical findings
 
-The supplied benchmark context identifies these historical issues:
+The supplied public-audit ground truth includes:
 
-- settlement could consume newer Pending deposit or redemption requests; and
-- a payable native deposit path could account for more assets than were actually
-  custodied.
+- **Critical:** a payable native deposit can record more assets than were actually
+  provided; and
+- **High:** settlement moves assets or shares belonging to newer requests that should
+  remain Pending.
 
-This scaffold does not independently restate their original titles, severities,
-affected lines, or remediation details.
+The audit also contains lower-severity or general protocol findings outside, or only
+partially within, this workflow's narrow standards-conformance scope. This document
+does not claim those findings as expected workflow coverage.
 
 ## Workflow-detected findings
 
-The workflow surfaced observations strongly matching both historical issues above:
+Observed workflow results on the audited historical code included:
 
-- settlement consuming newer Pending deposit/redemption requests; and
-- payable native deposit accounting more assets than actually custodied.
+- deposit settlement consuming assets belonging to newer Pending requests;
+- redemption settlement burning or consuming shares belonging to newer Pending
+  requests; and
+- a payable native deposit recording more assets than were actually custodied.
 
-It also surfaced additional ERC-7540 conformance and authorization candidates. Those
-candidates have not yet been manually classified in this benchmark.
+It also surfaced additional controller/claim authorization candidates and several
+informational conformance candidates. Those additional results are unvalidated and
+must not be treated as confirmed findings merely because the workflow emitted them.
 
 ## True positives
 
-Two workflow results are strong matches to supplied descriptions of known public
-findings. Treat them as provisional true positives until a reviewer records a
-line-by-line comparison with the public report and audited commit. No broader recall
-or precision conclusion is supported yet.
+The payable native deposit result strongly corresponds to the known Critical finding.
+The deposit and redemption settlement results strongly correspond to two
+manifestations of the same known High finding. These are known issue matches for this
+benchmark, but they do not establish general precision, recall, or performance on
+other implementations.
 
 ## False positives
 
@@ -62,21 +67,28 @@ the workflow emitted them.
 
 ## Missed findings
 
-Not yet measured. The supplied facts do not establish the complete applicable audit
-finding set or which findings fall within this workflow's deliberately narrow
-ERC-7540 scope.
+No complete in-scope missed-finding analysis has been recorded. Lower-severity and
+general protocol findings that do not directly prove an ERC-7540 requirement
+violation are intentional scope exclusions, not evidence of a workflow failure.
+Findings that are only partially within scope still require case-by-case mapping
+before being counted. No claim of complete in-scope coverage is made.
 
 ## Deduplication observations
 
-The Depth 2 step consumes all Depth 1 candidates and is instructed to merge candidates
-with the same root cause and materially equivalent trigger. No measured pre/post
-deduplication counts or quality conclusions have been supplied.
+The Depth 2 step consumes the full Depth 1 batch and is instructed to merge candidates
+with the same root cause and materially equivalent trigger. In this run, the known
+High appeared as separate deposit and redemption manifestations. Separate records can
+be useful when triggers or effects differ, but the split shows that root-cause
+grouping and cross-domain deduplication need further calibration. Measured pre/post
+candidate counts have not been recorded.
 
 ## Severity observations
 
-Not yet measured. The final workflow schema records issue type and exploitability but
-does not emit a severity field. Severity should be assigned manually from demonstrated
-impact, reachability, and the benchmark's chosen rubric.
+The final workflow schema records issue type and exploitability but does not emit a
+severity field. Although the matched public findings were rated Critical and High by
+Nethermind, the workflow does not independently reproduce those rankings. Severity
+must be assigned manually from demonstrated impact, reachability, assumptions, and a
+declared rubric; calibration remains an improvement area.
 
 ## Model / configuration
 
@@ -92,8 +104,8 @@ Not recorded in the supplied benchmark context. Future runs should record at lea
 
 - This is one historical implementation and two supplied issue matches, not a
   representative benchmark suite.
-- The two matches have not yet been documented with report IDs, source lines, or
-  reproductions in this file.
+- The known matches have not yet been documented here with report IDs, source lines,
+  or reproductions.
 - No confusion matrix, repeated-run analysis, or coverage baseline is available.
 - Additional candidates remain unvalidated, and missed in-scope findings have not
   been established.
@@ -101,3 +113,5 @@ Not recorded in the supplied benchmark context. Future runs should record at lea
   version.
 - Matching known findings does not demonstrate complete ERC-7540 conformance or
   protocol security.
+- More audited implementations and repeated runs are needed before drawing broader
+  conclusions.

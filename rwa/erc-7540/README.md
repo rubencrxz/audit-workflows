@@ -4,6 +4,17 @@
 reachable asynchronous ERC-4626 vaults against ERC-7540. It is the source of truth
 for the implemented prompts, schemas, step settings, and workflow metadata.
 
+Workflow documentation version: `v0.1.0`. This version identifies the initial public
+workflow release; no Git tag is implied.
+
+## Current status
+
+- Initial workflow implementation complete.
+- Benchmarked against one historical audited implementation.
+- Further benchmarks and iterative refinement are planned.
+- Known improvement areas include cross-reviewer deduplication and severity
+  calibration.
+
 ## Objective
 
 The workflow maps each active ERC-7540 target, runs focused reviews of applicable
@@ -43,8 +54,9 @@ or ordering between distinct non-zero request IDs.
 
 `Map Asynchronous Vault Targets` resolves production wiring, inheritance, proxies,
 configuration, share-token relationships, entrypoints, state, authorization,
-interfaces, events, and reachability. It emits one record per supported target and
-does not make vulnerability or conformance conclusions.
+interfaces, events, and reachability. Its multi-output result contains zero to many
+mapped targets, with one record per supported target. It does not make vulnerability
+or conformance conclusions.
 
 ### Depth 1: focused review
 
@@ -57,10 +69,12 @@ Each mapped target is examined by six sibling reviewers:
 5. `Review ERC-4626 Async Overrides and Claim Semantics`
 6. `Review Methods, Getters, Reverts and Events`
 
-Each reviewer emits one structured record per materially distinct candidate, or zero
-records when it cannot support a deviation. Candidates contain requirement,
-configuration, source, trigger, impact, reachability, countercheck, inheritance, and
-assumption evidence. Depth 1 does not assign final severity or force a finding.
+Each reviewer emits zero to many structured candidate records, with one record per
+materially distinct deviation it supports. Across all six multi-output siblings,
+Depth 1 therefore produces a zero-to-many candidate batch. Candidates contain
+requirement, configuration, source, trigger, impact, reachability, countercheck,
+inheritance, and assumption evidence. Depth 1 does not assign final severity or force
+a finding.
 
 ### Depth 2: batched adjudication
 
@@ -70,10 +84,11 @@ applicability, resolves production paths and safeguards, rejects speculative or
 permitted behavior, and deduplicates candidates sharing a root cause and materially
 equivalent trigger.
 
-The final step emits zero to many structured findings. A surviving record includes a
-summary, proof-oriented explanation, primary path and line, trigger flow, concrete
-input or transaction sequence, finding category, actor, and exploitability flag. Zero
-records is a valid result at every multi-output stage; placeholders are not required.
+The final multi-output step emits zero to many structured findings. A surviving
+record includes a summary, proof-oriented explanation, primary path and line, trigger
+flow, concrete input or transaction sequence, finding category, actor, and
+exploitability flag. Zero records is a valid result at every multi-output stage;
+placeholders are not required.
 
 ## Intended usage
 
@@ -99,3 +114,7 @@ Use [`specification.md`](specification.md) to maintain the normative coverage ma
 
 All candidates and findings require manual validation. Workflow output does not prove
 complete ERC-7540 compliance and does not establish protocol security.
+
+This is experimental open-source tooling. Standards conformance does not imply
+economic or security correctness, and results can vary with the model, Open-Kritt
+runtime, repository context, dependencies, and configuration.

@@ -4,6 +4,9 @@ Use this template to document a standards-based smart-contract review workflow. 
 the executable workflow export as the source of truth and pin benchmark targets to
 commits.
 
+Record a documentation/workflow version independently of repository tags, and state
+whether a corresponding tag exists.
+
 ## Objective
 
 State the concrete review objective, target implementation type, and expected use of
@@ -68,7 +71,7 @@ Record:
 - public target repository and pinned audited/fixed commits;
 - public audit or issue references;
 - in-scope known findings and the matching rule;
-- model, harness, workflow hash, configuration, and run count;
+- model, harness, workflow version and hash, configuration, and run count;
 - validation procedure and true-positive criteria;
 - false positives, missed findings, and exclusions;
 - candidates before and after adjudication/deduplication; and
