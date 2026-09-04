@@ -7,11 +7,11 @@ boundaries easier to inspect before a broader manual audit.
 This collection emphasizes:
 
 - role and permission semantics, including the authority of owners, controllers,
-  operators, receivers, and delegated callers;
+  operators, receivers and delegated callers.
 - lifecycle requirements and the consistency of state transitions across requests,
-  fulfillment, and claims;
-- interface declarations, required methods, observable return values, reverts, and
-  events; and
+  fulfillment and claims.
+- interface declarations, required methods, observable return values, reverts and
+  events.
 - standards-aware security review where a concrete implementation behavior violates
   or undermines a normative requirement.
 
