@@ -1,15 +1,12 @@
-# Smart-Contract Audit Workflows
+# SmartnContract Audit Workflows
 
-This repository collects reusable workflows for focused smart-contract review. The
+This repository collects reusable workflows for focused smart contract review. The
 workflows are designed to help reviewers examine standards conformance,
-authorization boundaries, lifecycle semantics, interface requirements, and concrete
+authorization boundaries, lifecycle semantics, interface requirements and concrete
 implementation deviations from normative behavior.
 
-The initial collection focuses on real-world asset (RWA) and tokenization standards.
-The first workflow reviews asynchronous ERC-4626 vaults against ERC-7540.
-
-These workflows are first-pass review tools. They complement, and do not replace,
-manual security audits, protocol-specific threat modeling, economic analysis, or
+These workflows are first-pass review tools. They complement and do not replace,
+manual security audits, protocol-specific threat modeling, economic analysis or
 testing.
 
 ## Available workflows
@@ -33,7 +30,7 @@ security.
 
 ## Disclaimer
 
-This repository contains experimental open-source tooling. Every output requires
+This repository contains experimental open source tooling. Every output requires
 manual validation against the applicable specification, deployed configuration, and
 production code. Standards conformance does not imply economic correctness or
 protocol security, and workflow behavior can vary with the model, runtime, supplied
