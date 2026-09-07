@@ -1,8 +1,7 @@
 # ERC-7540 Asynchronous Vault Conformance Review
 
-[`workflow.json`](workflow.json) is an Open-Kritt export for reviewing production-
-reachable asynchronous ERC-4626 vaults against ERC-7540. It is the source of truth
-for the implemented prompts, schemas, step settings, and workflow metadata.
+[`workflow.json`](workflow.json) is an Open-Kritt export for reviewing production reachable asynchronous ERC-4626 vaults against ERC-7540. It is the source of truth
+for the implemented prompts, schemas, step settings and workflow metadata.
 
 Workflow documentation version: `v0.1.0`. This version identifies the initial public
 workflow release; no Git tag is implied.
@@ -18,9 +17,8 @@ workflow release; no Git tag is implied.
 ## Objective
 
 The workflow maps each active ERC-7540 target, runs focused reviews of applicable
-normative behavior, and adjudicates candidate deviations into evidence-backed final
-findings. It covers ERC-20, ERC-165, ERC-4626, and ERC-7575 only where ERC-7540
-explicitly requires, inherits, modifies, or relies on them.
+normative behavior, and adjudicates candidate deviations into evidence backed final
+findings. 
 
 ## Scope
 
@@ -36,7 +34,7 @@ Review scope includes:
   and
 - ERC-165 and ERC-7575 integration explicitly required by ERC-7540.
 
-## Non-goals
+## Non Goals
 
 This is not a general vault or protocol audit. The workflow excludes NAV and oracle
 manipulation, strategy accounting, solvency and liquidity, epoch or protocol
