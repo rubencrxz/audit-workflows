@@ -14,11 +14,14 @@ testing.
 | Area | Workflow | Version |
 | --- | --- | --- |
 | RWA / tokenization | [ERC-7540 Asynchronous Vault Conformance Review](rwa/erc-7540/) | `v0.1.0` |
+| RWA / tokenization | [ERC-3643 Production Conformance Review](rwa/erc-3643/) | `v0.1.0` |
 
 ## Repository layout
 
 - [`rwa/`](rwa/) contains workflows for RWA and tokenization standards.
 - [`rwa/erc-7540/`](rwa/erc-7540/) contains the ERC-7540 workflow, coverage map, and
+  benchmark notes.
+- [`rwa/erc-3643/`](rwa/erc-3643/) contains the ERC-3643 workflow, coverage map, and
   benchmark notes.
 - [`templates/workflow-template.md`](templates/workflow-template.md) provides a
   practical outline for future standards-based workflows.

@@ -23,3 +23,4 @@ context.
 ## Available workflows
 
 - [`ERC-7540 Asynchronous Vault Conformance Review`](erc-7540/)
+- [`ERC-3643 Production Conformance Review`](erc-3643/)
